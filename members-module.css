@@ -1,0 +1,144 @@
+/* components/Members.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e7dff, #ff6a00);
+    padding: 20px;
+}
+
+.title {
+    color: white;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 36px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid white;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.subheading {
+    color: white;
+    margin: 40px 0 20px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.cardContainer {
+    position: relative;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #ff6a00, #ffcc00);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cardContainer:hover .card {
+    transform: rotateY(15deg) rotateX(15deg) scale(1.05);
+}
+
+.profileImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    transition: all  0.3s ease;
+}
+
+.cardContainer:hover .profileImage {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.cardContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.memberName {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.memberRole {
+    font-size: 16px;
+    color: #666;
+}
+
+.details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 20;
+}
+
+.cardContainer:hover .details {
+    opacity: 1;
+}
+
+.details p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+}

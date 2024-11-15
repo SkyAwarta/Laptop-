@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smooth Hover Effect Card</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap');
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RGB Animation */
+        @keyframes rgbAnimation {
+            0% { border-color: red; }
+            25% { border-color: green; }
+            50% { border-color: blue; }
+            75% { border-color: yellow; }
+            100% { border-color: red; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6e7dff, #ff6a00);
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 36px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .subheading {
+            margin: 40px 0 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 cards in one row */
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card-container {
+            position: relative;
+            height: 300px; /* Smaller height */
+            perspective: 1000px;
+            transition: transform 0.5s ease;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            background: white; /* Clean white background */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d; /* Enable 3D effect */
+        }
+
+        .card-container:hover .card {
+            transform: rotateY(10deg) rotateX(10deg); /* 3D hover effect */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid transparent; /* Transparent border for animation */
+            object-fit: cover;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 10;
+            transition: transform 0.3s ease;
+            animation: rgbAnimation 3s infinite; /* RGB animation */
+        }
+
+        .card-container:hover .profile-image {
+            transform: translate(-50%, 0) scale(1.1);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .member-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .details {
+            position: absolute;
+            top: 0;
+            left:  0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+        }
+
+        .card-container:hover .details {
+            opacity: 1;
+        }
+
+        .details p {
+            margin: 5px 0;
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>MEMBERS OF ATOMIC AVENGERS</h1>
+
+    <div class="card-grid">
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/suvam.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Subham Thapa</h2>
+                    <p class="member-role">Leader</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> kntithapa0035@gmail.com</p>
+                    <p><strong>Phone:</strong> 9847139566</p>
+                    <p><strong>Address:</strong> Butwal-10, Kalikanagar</p>
+                    <p><strong>Description:</strong> A passionate guy for science and engineering</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/nigga.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Saksham Dhakal</h2>
+                    <p class="member-role">Web Developer</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> nitrosellinng297@gmail.com</p>
+                    <p><strong>Phone:</strong> 9867573907</p>
+                    <p><strong>Address:</strong> Butwal-11, Devinagar</p>
+                    <p><strong>Description:</strong> A creative web developer with a knack for building user-friendly websites.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/sworup.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Sworup Bhari</h2>
+                    <p class="member-role">Project Management</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> sworupbhari222@gmail.com</p>
+                    <p><strong>Phone:</strong> 9847072126</p>
+                    <p><strong>Address:</strong> Butwal-9, Milanchowk</p>
+                    <p><strong>Description:</strong> A strategic project coordinator with robust engineering management.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/sujal.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Sujal Panthi</h2>
+                    <p class="member-role">Engineering</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> sujalpanthi7492@gmail.com</p>
+                    <p><strong>Phone:</strong> 9707594112</p>
+                    <p><strong>Address:</strong> Butwal-10, Kalikanagar</p>
+                    <p><strong>Description:</strong> A finance and engineering manager to oversee our team’s financial planning and analysis.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/bibek.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Bibek Bhusal</h2>
+ ```html
+                    <p class="member-role">Structural Designer</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> bibekbhusal7@gmail.com</p>
+                    <p><strong>Phone:</strong> 9847443277</p>
+                    <p><strong>Address:</strong> Butwal-8, Sukkhanagar</p>
+                    <p><strong>Description:</strong> A structural manager with a passion for creating models.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/gaman.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Gaman G.C.</h2>
+                    <p class="member-role">Product Manager</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> blazefenax@gmail.com</p>
+                    <p><strong>Phone:</strong> 9768281448</p>
+                    <p><strong>Address:</strong> Butwal-8, Sukkhanagar</p>
+                    <p><strong>Description:</strong> A product manager with a passion for delivering exceptional products.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/raute.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Pratim Aryal</h2>
+                    <p class="member-role">Digital Assistant</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> aryalpratim1237@gmail.com</p>
+                    <p><strong>Phone:</strong> 9847058685</p>
+                    <p><strong>Address:</strong> Butwal-7, Deepnagar</p>
+                    <p><strong>Description:</strong> A digital companion that helped us with electronic tools.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/siddharta.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Siddhartha Bashyal</h2>
+                    <p class="member-role">Advertiser</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> hanxyboii@gmail.com</p>
+                    <p><strong>Phone:</strong> 9847031222</p>
+                    <p><strong>Address:</strong> Butwal-8, Sukkhanagar</p>
+                    <p><strong>Description:</strong> A specialist dedicated to advertise our projects.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="subheading">Helpers/Supporters</h2>
+
+    <div class="card-grid">
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/awarta.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Awarta Archarya</h2>
+                    <p class="member-role">Support Staff</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email:</strong> awartasharma@gmail.com</p>
+                    <p><strong>Phone:</strong> 9808881451</p>
+                    <p><strong>Address:</strong> Butwal-8, Sukkhanagar</p>
+                    <p><strong>Description:</strong> A dedicated support staff member assisting with various tasks.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="./images/bihan.jpg" alt="Profile" class="profile-image">
+                <div class="card-content">
+                    <h2 class="member-name">Bihan Neupane</h2>
+                    <p class="member-role">Supporter</p>
+                </div>
+                <div class="details">
+                    <p><strong>Email :</strong> helpertwo@example.com</p>
+                    <p><strong>Phone:</strong> 0987654321</p>
+                    <p><strong>Address:</strong> Butwal-4, Laxminagar</p>
+                    <p><strong>Description:</strong> A volunteer who helps with community outreach.</p>
+                    <p><strong>Gender:</strong> Male</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.card-container');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = card.getBoundingClientRect();
+                const x = e.clientX - left;
+                const y = e.clientY - top;
+
+                const xRotation = ((y / height) - 0.5) * 20; // Adjust rotation for Y-axis
+                const yRotation = ((x / width) - 0.5) * -20; // Adjust rotation for X-axis
+
+                card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0) rotateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
